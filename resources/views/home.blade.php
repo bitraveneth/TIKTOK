@@ -1,299 +1,481 @@
 @extends('layouts.app')
 
-@php
-    $slides = [
-        [
-            'eyebrow' => 'Flagship Launch',
-            'badge' => '40K',
-            'unit' => 'PUFFS',
-            'title' => 'Pulse X Control Disposable',
-            'copy' => 'A high-output launch device built around long-session battery life, cold-finish airflow, and a hardware silhouette that reads premium from the first screen.',
-            'series' => 'ICE + NIC CONTROL SERIES',
-            'scene' => 'hero-scene-road',
-            'metrics' => [
-                ['value' => '18ML', 'label' => 'E-liquid'],
-                ['value' => '850mAh', 'label' => 'Battery'],
-                ['value' => 'Dual Mesh', 'label' => 'Coil'],
-            ],
-            'support' => [
-                ['label' => 'After-Sales', 'href' => route('support')],
-                ['label' => 'Verification', 'href' => route('verification')],
-            ],
-            'devices' => [
-                ['name' => 'Kiwi Strawberry', 'class' => 'device-lime'],
-                ['name' => 'Purple Storm', 'class' => 'device-violet'],
-                ['name' => 'Cherry Pop', 'class' => 'device-pink'],
-            ],
-        ],
-        [
-            'eyebrow' => 'Flavor Platform',
-            'badge' => '18ML',
-            'unit' => 'CAPACITY',
-            'title' => 'Crystal Mesh Flavor Series',
-            'copy' => 'A brighter collection slot for fast-rotation flavor campaigns, curated colorways, and technical callouts that keep the range feeling engineered rather than generic.',
-            'series' => 'MESH FLAVOR PLATFORM',
-            'scene' => 'hero-scene-spectrum',
-            'metrics' => [
-                ['value' => '12', 'label' => 'Flavors'],
-                ['value' => 'LED', 'label' => 'Display Ring'],
-                ['value' => 'USB-C', 'label' => 'Recharge'],
-            ],
-            'support' => [
-                ['label' => 'View Products', 'href' => route('products').'#flavors'],
-                ['label' => 'Read Launch Notes', 'href' => route('news').'#launch-story'],
-            ],
-            'devices' => [
-                ['name' => 'Mint Rush', 'class' => 'device-mint'],
-                ['name' => 'Sky Berry', 'class' => 'device-sky'],
-                ['name' => 'Black Ice', 'class' => 'device-dark'],
-            ],
-        ],
-        [
-            'eyebrow' => 'Trade Program',
-            'badge' => 'B2B',
-            'unit' => 'READY',
-            'title' => 'Wholesale Packs and Verified Stock',
-            'copy' => 'A trade-facing stage for carton quantities, verified inventory, and region-aware onboarding when retail buyers need a direct route instead of browsing like consumers.',
-            'series' => 'RETAIL SUPPLY CHANNEL',
-            'scene' => 'hero-scene-trade',
-            'metrics' => [
-                ['value' => 'MOQ', 'label' => 'Carton Plans'],
-                ['value' => 'Batch', 'label' => 'Verified'],
-                ['value' => '24h', 'label' => 'Lead Review'],
-            ],
-            'support' => [
-                ['label' => 'Trade Inquiry', 'href' => route('wholesale').'#trade-inquiry'],
-                ['label' => 'Verification Flow', 'href' => route('verification').'#manual-review'],
-            ],
-            'devices' => [
-                ['name' => 'Orange Nova', 'class' => 'device-orange'],
-                ['name' => 'Ruby Pod', 'class' => 'device-red'],
-                ['name' => 'Graphite Max', 'class' => 'device-dark'],
-            ],
-        ],
-    ];
-@endphp
-
-@section('title', 'RoopDistrict | Commercial Vape Storefront')
-@section('meta_description', 'A light commercial vape homepage with a warning strip, white navigation, large product banner, videos, products, verification, and wholesale blocks.')
+@section('title', 'Vape | Commercial Vape Storefront')
+@section('meta_description', 'A commercial vape homepage with a warning strip, dark navigation, large product banner, launch cards, video stories, and lifestyle sections.')
 
 @section('content')
-    <section class="hero-shell pt-0">
-        <div class="hero-slider" data-slider>
-            @foreach ($slides as $index => $slide)
-                <article class="hero-slide {{ $index === 0 ? 'is-active' : '' }}" data-slide aria-hidden="{{ $index === 0 ? 'false' : 'true' }}">
-                    <div class="hero-scene {{ $slide['scene'] }}">
-                        <div class="hero-scene-inner">
-                            <div class="hero-copy-panel">
-                                <p class="hero-overline">{{ $slide['eyebrow'] }}</p>
-                                <div class="hero-badge-row">
-                                    <p class="hero-badge">{{ $slide['badge'] }}</p>
-                                    <span class="hero-badge-unit">{{ $slide['unit'] }}</span>
-                                </div>
-                                <h1 class="hero-title">{{ $slide['title'] }}</h1>
-                                <p class="hero-copy">{{ $slide['copy'] }}</p>
+    @php
+        $heroSlides = [
+            [
+                'scene' => 'campaign-scene-desert',
+                'device' => 'campaign-device-red',
+                'kicker' => 'New Arrival',
+                'title' => 'Vape Nano 3',
+                'subtitle' => 'Up to 5X Airflow Capacity',
+                'description' => 'Compact device platform with a larger airflow window, stronger output control, and a cleaner launch-stage presentation for the homepage.',
+                'cta' => 'Learn More',
+                'screen_value' => '30W',
+                'screen_label' => 'Airflow Pro',
+                'stats' => [
+                    ['value' => '0.6Ω', 'label' => 'Mesh Core'],
+                    ['value' => '1000', 'label' => 'mAh Cell'],
+                    ['value' => '3', 'label' => 'Power Modes'],
+                ],
+            ],
+            [
+                'scene' => 'campaign-scene-aurora',
+                'device' => 'campaign-device-cyan',
+                'kicker' => 'Flavor Platform',
+                'title' => 'Vape Crystal S',
+                'subtitle' => 'Display Ring With Bright Ice Finish',
+                'description' => 'A brighter hero lane for flavor campaigns with cooler gradients, high-visibility device framing, and cleaner callouts for retail launches.',
+                'cta' => 'Explore Products',
+                'screen_value' => '18ML',
+                'screen_label' => 'Flavor Tank',
+                'stats' => [
+                    ['value' => '12', 'label' => 'Flavors'],
+                    ['value' => 'LED', 'label' => 'Display Ring'],
+                    ['value' => 'USB-C', 'label' => 'Recharge'],
+                ],
+            ],
+            [
+                'scene' => 'campaign-scene-graphite',
+                'device' => 'campaign-device-graphite',
+                'kicker' => 'Retail Series',
+                'title' => 'Vape Black Edition',
+                'subtitle' => 'Sharper Finish For Shelf-Focused Drops',
+                'description' => 'Built for premium launch windows, distributor decks, and a darker showroom aesthetic that still gives the product enough visual weight.',
+                'cta' => 'View Catalog',
+                'screen_value' => '45K',
+                'screen_label' => 'Puff Count',
+                'stats' => [
+                    ['value' => 'IP68', 'label' => 'Shield Body'],
+                    ['value' => 'Dual', 'label' => 'Mesh Coil'],
+                    ['value' => 'Fast', 'label' => 'Charge'],
+                ],
+            ],
+        ];
 
-                                <div class="hero-metrics">
-                                    @foreach ($slide['metrics'] as $metric)
-                                        <article class="hero-metric-card">
-                                            <strong>{{ $metric['value'] }}</strong>
-                                            <span>{{ $metric['label'] }}</span>
-                                        </article>
-                                    @endforeach
-                                </div>
+        $newArrivalCards = [
+            [
+                'title' => 'Force',
+                'scene' => 'arrival-scene-canyon',
+                'device' => 'arrival-device-orange',
+                'display' => '80',
+            ],
+            [
+                'title' => 'Legend 5',
+                'scene' => 'arrival-scene-alpine',
+                'device' => 'arrival-device-graphite',
+                'display' => '200',
+            ],
+        ];
 
-                                <div class="hero-support-links">
-                                    @foreach ($slide['support'] as $link)
-                                        <a href="{{ $link['href'] }}">{{ $link['label'] }}</a>
-                                    @endforeach
-                                </div>
-                            </div>
+        $seriesCards = [
+            [
+                'series' => 'Aegis Series',
+                'model' => 'Hero 5',
+                'theme' => 'series-card-aegis',
+                'device' => 'series-device-aegis',
+            ],
+            [
+                'series' => 'Wenax Series',
+                'model' => 'Wenax Q2',
+                'theme' => 'series-card-wenax',
+                'device' => 'series-device-wenax',
+            ],
+            [
+                'series' => 'Aegis Series',
+                'model' => 'Legend 5',
+                'theme' => 'series-card-legend',
+                'device' => 'series-device-legend',
+                'featured' => true,
+            ],
+            [
+                'series' => 'Digi Series',
+                'model' => 'Digi Q Vista',
+                'theme' => 'series-card-digi',
+                'device' => 'series-device-digi',
+            ],
+            [
+                'series' => 'Sonder Series',
+                'model' => 'Sonder Q2',
+                'theme' => 'series-card-sonder',
+                'device' => 'series-device-sonder',
+            ],
+            [
+                'series' => 'Aegis Series',
+                'model' => 'Boost 3',
+                'theme' => 'series-card-aegis',
+                'device' => 'series-device-aegis',
+            ],
+            [
+                'series' => 'Wenax Series',
+                'model' => 'Wenax M2',
+                'theme' => 'series-card-wenax',
+                'device' => 'series-device-wenax',
+            ],
+            [
+                'series' => 'Digi Series',
+                'model' => 'Digi Max',
+                'theme' => 'series-card-digi',
+                'device' => 'series-device-digi',
+            ],
+            [
+                'series' => 'Sonder Series',
+                'model' => 'Sonder Pro',
+                'theme' => 'series-card-sonder',
+                'device' => 'series-device-sonder',
+            ],
+            [
+                'series' => 'Aegis Series',
+                'model' => 'Legend Mini',
+                'theme' => 'series-card-legend',
+                'device' => 'series-device-legend',
+            ],
+        ];
 
-                            <div class="hero-visual-panel">
-                                <div class="hero-brand-chip">
-                                    <span>VPU</span>
-                                    <small>Inside</small>
-                                </div>
+        $videoStories = [
+            [
+                'title' => 'Master Mode',
+                'theme' => 'video-tile-editorial',
+                'layout' => 'video-tile-portrait-left',
+                'embed' => 'https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?autoplay=1&rel=0&start=3',
+            ],
+            [
+                'title' => 'Skin Close-Up',
+                'theme' => 'video-tile-skin',
+                'layout' => 'video-tile-top-center',
+                'embed' => 'https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?autoplay=1&rel=0&start=12',
+            ],
+            [
+                'title' => 'Alpine Dawn',
+                'theme' => 'video-tile-alpine',
+                'layout' => 'video-tile-top-right',
+                'embed' => 'https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?autoplay=1&rel=0&start=24',
+            ],
+            [
+                'title' => 'Coast Walk',
+                'theme' => 'video-tile-coast',
+                'layout' => 'video-tile-bottom-left',
+                'embed' => 'https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?autoplay=1&rel=0&start=36',
+            ],
+            [
+                'title' => 'Expo Reel',
+                'theme' => 'video-tile-expo',
+                'layout' => 'video-tile-center-right',
+                'embed' => 'https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?autoplay=1&rel=0&start=48',
+            ],
+            [
+                'title' => 'Trail Orange',
+                'theme' => 'video-tile-outdoor',
+                'layout' => 'video-tile-right',
+                'embed' => 'https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?autoplay=1&rel=0&start=60',
+            ],
+            [
+                'title' => 'Golden Lounge',
+                'theme' => 'video-tile-lounge',
+                'layout' => 'video-tile-bottom-center',
+                'embed' => 'https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?autoplay=1&rel=0&start=72',
+            ],
+            [
+                'title' => 'Workshop Cut',
+                'theme' => 'video-tile-workshop',
+                'layout' => 'video-tile-bottom-small',
+                'embed' => 'https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?autoplay=1&rel=0&start=84',
+            ],
+        ];
 
-                                <div class="hero-device-stage">
-                                    <div class="hero-device-aura"></div>
-                                    <div class="device-cluster">
-                                        @foreach ($slide['devices'] as $deviceIndex => $device)
-                                            <div class="device-card {{ $device['class'] }} {{ $deviceIndex === 1 ? 'device-card-center' : '' }} {{ $deviceIndex === 2 ? 'device-card-tilt' : '' }}">
-                                                <span class="device-cap"></span>
-                                                <span class="device-front">
-                                                    <span class="device-mark">{{ substr($device['name'], 0, 1) }}</span>
-                                                </span>
-                                                <span class="device-label">{{ $device['name'] }}</span>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
+        $lovedMoments = [
+            [
+                'title' => 'Lounge Edit',
+                'theme' => 'loved-tile-lounge',
+                'layout' => 'loved-tile-left',
+            ],
+            [
+                'title' => 'Expo Crowd',
+                'theme' => 'loved-tile-crowd',
+                'layout' => 'loved-tile-center-right',
+            ],
+            [
+                'title' => 'Retail Card',
+                'theme' => 'loved-tile-card',
+                'layout' => 'loved-tile-mid-right',
+            ],
+            [
+                'title' => 'Hand Check',
+                'theme' => 'loved-tile-hand',
+                'layout' => 'loved-tile-right-center',
+            ],
+            [
+                'title' => 'Brand Bag',
+                'theme' => 'loved-tile-bag',
+                'layout' => 'loved-tile-far-right',
+            ],
+            [
+                'title' => 'Coast Review',
+                'theme' => 'loved-tile-coast',
+                'layout' => 'loved-tile-bottom-left',
+            ],
+            [
+                'title' => 'Velvet Session',
+                'theme' => 'loved-tile-velvet',
+                'layout' => 'loved-tile-bottom-center',
+            ],
+        ];
+    @endphp
 
-                                <div class="hero-gallery">
-                                    @foreach ($slide['devices'] as $device)
-                                        <article class="hero-gallery-card">
-                                            <div class="hero-gallery-device {{ $device['class'] }}">
-                                                <span class="device-cap"></span>
-                                                <span class="device-front">
-                                                    <span class="device-mark">{{ substr($device['name'], 0, 1) }}</span>
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <p class="hero-gallery-label">{{ $device['name'] }}</p>
-                                                <p class="hero-gallery-copy">{{ $slide['series'] }}</p>
-                                            </div>
-                                        </article>
-                                    @endforeach
-                                </div>
-
-                                <div class="hero-side-rail">
-                                    @foreach ($slide['metrics'] as $metric)
-                                        <div class="hero-side-stat">
-                                            <strong>{{ $metric['value'] }}</strong>
-                                            <span>{{ $metric['label'] }}</span>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
+    <section class="campaign-hero" data-campaign-slider data-autoplay="5600">
+        <div class="campaign-slider-track">
+            @foreach ($heroSlides as $index => $slide)
+                <article
+                    class="campaign-slide {{ $index === 0 ? 'is-active' : '' }}"
+                    data-campaign-slide
+                    aria-hidden="{{ $index === 0 ? 'false' : 'true' }}"
+                    @if ($index !== 0) hidden @endif
+                >
+                    <div class="campaign-hero-scene {{ $slide['scene'] }}">
+                        <div class="campaign-hero-badge">
+                            <span>VPU</span>
+                            <small>Inside</small>
                         </div>
 
-                        <div class="hero-bottom-series">
-                            <p>{{ $slide['series'] }}</p>
-                            <span>New Arrival</span>
+                        <div class="campaign-hero-inner">
+                            <div class="campaign-hero-product">
+                                <div class="campaign-moon" aria-hidden="true"></div>
+
+                                <div class="campaign-device {{ $slide['device'] }}">
+                                    <span class="campaign-device-mouthpiece"></span>
+                                    <span class="campaign-device-body">
+                                        <span class="campaign-device-shell"></span>
+                                        <span class="campaign-device-logo">VAPE</span>
+                                        <span class="campaign-device-screen">
+                                            <strong>{{ $slide['screen_value'] }}</strong>
+                                            <small>{{ $slide['screen_label'] }}</small>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="campaign-hero-copy">
+                                <p class="campaign-kicker">{{ $slide['kicker'] }}</p>
+                                <h1 class="campaign-title">{{ $slide['title'] }}</h1>
+                                <p class="campaign-subtitle">{{ $slide['subtitle'] }}</p>
+                                <p class="campaign-description">{{ $slide['description'] }}</p>
+
+                                <div class="campaign-spec-grid">
+                                    @foreach ($slide['stats'] as $stat)
+                                        <article class="campaign-spec-card">
+                                            <strong>{{ $stat['value'] }}</strong>
+                                            <span>{{ $stat['label'] }}</span>
+                                        </article>
+                                    @endforeach
+                                </div>
+
+                                <a href="{{ route('products') }}" class="campaign-link">{{ $slide['cta'] }} &gt;</a>
+                            </div>
                         </div>
                     </div>
                 </article>
             @endforeach
+        </div>
 
-            <div class="hero-controls">
-                <div class="hero-dots" role="tablist" aria-label="Banner slides">
-                    @foreach ($slides as $index => $slide)
-                        <button
-                            type="button"
-                            class="hero-dot {{ $index === 0 ? 'is-active' : '' }}"
-                            data-slide-dot="{{ $index }}"
-                            aria-label="Show slide {{ $index + 1 }}"
-                            aria-selected="{{ $index === 0 ? 'true' : 'false' }}"
-                        ></button>
+        <div class="campaign-slider-ui">
+            <div class="campaign-slider-dots" role="tablist" aria-label="Homepage featured products">
+                @foreach ($heroSlides as $index => $slide)
+                    <button
+                        type="button"
+                        class="campaign-slider-dot {{ $index === 0 ? 'is-active' : '' }}"
+                        data-campaign-dot
+                        data-slide-index="{{ $index }}"
+                        aria-label="Show slide {{ $index + 1 }}"
+                        aria-current="{{ $index === 0 ? 'true' : 'false' }}"
+                    ></button>
+                @endforeach
+            </div>
+
+            <div class="campaign-slider-arrows">
+                <button type="button" class="campaign-slider-arrow" data-campaign-prev aria-label="Previous slide">
+                    <span aria-hidden="true">&lt;</span>
+                </button>
+                <button type="button" class="campaign-slider-arrow" data-campaign-next aria-label="Next slide">
+                    <span aria-hidden="true">&gt;</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="arrival-showcase">
+        <div class="shell py-14 sm:py-18">
+            <div class="arrival-showcase-heading">
+                <p class="arrival-showcase-kicker">New Arrival</p>
+            </div>
+
+            <div class="arrival-showcase-grid">
+                @foreach ($newArrivalCards as $card)
+                    <article class="arrival-card">
+                        <div class="arrival-stage {{ $card['scene'] }}">
+                            <div class="arrival-atmosphere" aria-hidden="true"></div>
+
+                            <div class="arrival-device {{ $card['device'] }}">
+                                <span class="arrival-device-mouthpiece"></span>
+                                <span class="arrival-device-body">
+                                    <span class="arrival-device-highlight"></span>
+                                    <span class="arrival-device-screen">
+                                        <strong>{{ $card['display'] }}</strong>
+                                        <small>Smart</small>
+                                    </span>
+                                    <span class="arrival-device-logo">VAPE</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <h2 class="arrival-card-title">{{ $card['title'] }}</h2>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <section class="series-carousel-section">
+        <div class="series-carousel-wrap py-14 sm:py-18">
+            <div class="series-carousel" data-series-carousel data-series-autoplay="4200" data-series-random="true">
+                <div class="series-carousel-track" data-series-track>
+                    @foreach ($seriesCards as $index => $card)
+                        <article
+                            class="series-card {{ $card['theme'] }} {{ !empty($card['featured']) ? 'series-card-featured' : '' }}"
+                            data-series-card
+                            data-series-index="{{ $index }}"
+                        >
+                            <div class="series-card-copy">
+                                <p>{{ $card['series'] }}</p>
+                                <h2>{{ $card['model'] }}</h2>
+                            </div>
+
+                            <div class="series-card-bolt" aria-hidden="true"></div>
+
+                            <div class="series-device {{ $card['device'] }}">
+                                <span class="series-device-top"></span>
+                                <span class="series-device-body">
+                                    <span class="series-device-glow"></span>
+                                    <span class="series-device-screen"></span>
+                                    <span class="series-device-mark">VAPE</span>
+                                </span>
+                            </div>
+                        </article>
                     @endforeach
                 </div>
 
-                <div class="hero-arrow-group">
-                    <button type="button" class="hero-arrow" data-slide-prev aria-label="Previous slide">&lt;</button>
-                    <button type="button" class="hero-arrow" data-slide-next aria-label="Next slide">&gt;</button>
+                <button type="button" class="series-carousel-arrow series-carousel-arrow-prev" data-series-prev aria-label="Previous series">
+                    <span aria-hidden="true">&lt;</span>
+                </button>
+
+                <button type="button" class="series-carousel-arrow series-carousel-arrow-next" data-series-next aria-label="Next series">
+                    <span aria-hidden="true">&gt;</span>
+                </button>
+
+                <div class="series-carousel-dots" role="tablist" aria-label="Series carousel pages">
+                    @foreach ($seriesCards as $index => $card)
+                        <button
+                            type="button"
+                            class="series-carousel-dot {{ $index === 2 ? 'is-active' : '' }}"
+                            data-series-dot
+                            data-series-index="{{ $index }}"
+                            aria-label="Show {{ $card['model'] }}"
+                            aria-current="{{ $index === 2 ? 'true' : 'false' }}"
+                        ></button>
+                    @endforeach
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="shell py-14 sm:py-16" id="about">
-        <div class="section-heading text-center">
-            <p class="section-kicker">Videos Section</p>
-            <h2 class="section-title text-4xl sm:text-5xl">Brand motion, launch reels, and feature explainers.</h2>
-        </div>
+    <section class="video-trending-section" id="about" data-trending-section>
+        <div class="video-trending-wrap py-16 sm:py-20">
+            <div class="video-trending-stage">
+                <div class="video-trending-title" data-scroll-reveal>New Trending</div>
 
-        <div class="mt-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-            <article class="video-card">
-                <div class="video-stage">
-                    <a href="{{ route('news') }}#launch-story" class="play-button" aria-label="Open the launch story"></a>
-                </div>
-                <div class="space-y-3">
-                    <h3 class="card-title">Homepage feature reel</h3>
-                    <p class="card-copy">Open the launch story for campaign notes, product callouts, and the content that supports this hero treatment.</p>
-                </div>
-            </article>
-
-            <div class="grid gap-6">
-                <article class="info-card">
-                    <p class="card-kicker">Support</p>
-                    <h3 class="card-title">Verification should be visible early.</h3>
-                    <p class="card-copy">Put QR verification, authenticity lookup, and batch-check guidance near the hero and video blocks.</p>
-                </article>
-
-                <article class="info-card">
-                    <p class="card-kicker">Wholesale</p>
-                    <h3 class="card-title">Trade buyers need a direct path.</h3>
-                    <p class="card-copy">Keep a clear route for distributors, carton quantities, and region availability instead of hiding it in the footer.</p>
-                </article>
+                @foreach ($videoStories as $index => $story)
+                    <article
+                        class="video-trending-tile {{ $story['theme'] }} {{ $story['layout'] }}"
+                        data-scroll-reveal
+                        data-reveal-delay="{{ $index }}"
+                        data-trending-card
+                        data-float-index="{{ $index }}"
+                    >
+                        <button
+                            type="button"
+                            class="video-trending-link"
+                            data-video-trigger
+                            data-video-title="{{ $story['title'] }}"
+                            data-video-embed="{{ $story['embed'] }}"
+                            aria-label="Play {{ $story['title'] }}"
+                        >
+                            <span class="video-trending-overlay"></span>
+                            <span class="video-trending-play" aria-hidden="true"></span>
+                            <span class="video-trending-caption">{{ $story['title'] }}</span>
+                        </button>
+                    </article>
+                @endforeach
             </div>
         </div>
     </section>
 
-    <section class="section-band" id="products">
-        <div class="shell py-14 sm:py-16">
-            <div class="section-heading">
-                <div>
-                    <p class="section-kicker">Products</p>
-                    <h2 class="section-title text-4xl sm:text-5xl">Recommended devices and flavor lines.</h2>
+    <div class="video-modal" data-video-modal hidden>
+        <div class="video-modal-backdrop" data-video-close></div>
+        <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+            <button type="button" class="video-modal-close" data-video-close aria-label="Close video">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="video-modal-frame">
+                <iframe
+                    data-video-iframe
+                    title="Video player"
+                    src=""
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                ></iframe>
+            </div>
+            <h2 class="video-modal-title" id="video-modal-title" data-video-title>Video</h2>
+        </div>
+    </div>
+
+    <section class="loved-section">
+        <div class="loved-header">
+            <h2 class="loved-title">Loved By You</h2>
+        </div>
+
+        <div class="loved-carousel-wrap">
+            <div class="loved-carousel" data-loved-carousel data-loved-autoplay="3600">
+                <div class="loved-track" data-loved-track>
+                    @foreach ($lovedMoments as $index => $moment)
+                        <article class="loved-card {{ $moment['theme'] }}" data-loved-card>
+                            <span class="loved-card-caption">{{ $moment['title'] }}</span>
+                        </article>
+                    @endforeach
+
+                    <article class="loved-card loved-card-quote" data-loved-card>
+                        <div class="loved-card-quote-copy">
+                            <p>"Powerful hits every time, solid and consistent performance."</p>
+                        </div>
+                    </article>
                 </div>
-                <p class="section-copy">The screenshot is product-first. These cards keep that structure but make room for cleaner specs and easier catalog growth later.</p>
-            </div>
 
-            <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-                <article class="product-card">
-                    <div class="product-thumb product-thumb-lime"></div>
-                    <p class="card-kicker">Disposable</p>
-                    <h3 class="card-title">Kiwi Strawberry Max</h3>
-                    <p class="card-copy">40K puff hero device with bright finish, dual control messaging, and launch-card presentation.</p>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-thumb product-thumb-violet"></div>
-                    <p class="card-kicker">Mesh Coil</p>
-                    <h3 class="card-title">Purple Pulse Control</h3>
-                    <p class="card-copy">Strong mid-page product block for device highlights, screen features, and flavor campaign tie-ins.</p>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-thumb product-thumb-pink"></div>
-                    <p class="card-kicker">Flavor Drop</p>
-                    <h3 class="card-title">Peach Ice Limited</h3>
-                    <p class="card-copy">Light product card treatment for one-off promotions and rotating featured stock.</p>
-                </article>
-
-                <article class="product-card">
-                    <div class="product-thumb product-thumb-dark"></div>
-                    <p class="card-kicker">Pod System</p>
-                    <h3 class="card-title">Graphite Pod Pro</h3>
-                    <p class="card-copy">A cleaner secondary product lane for starter kits, refillables, and support-heavy items.</p>
-                </article>
+                <div class="loved-dots" role="tablist" aria-label="Loved by you carousel">
+                    @foreach (array_merge($lovedMoments, [['title' => 'Quote']]) as $index => $moment)
+                        <button
+                            type="button"
+                            class="loved-dot {{ $index === 1 ? 'is-active' : '' }}"
+                            data-loved-dot
+                            data-loved-index="{{ $index }}"
+                            aria-label="Show {{ $moment['title'] }}"
+                            aria-current="{{ $index === 1 ? 'true' : 'false' }}"
+                        ></button>
+                    @endforeach
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="shell py-14 sm:py-16" id="verification">
-        <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <article class="promo-card promo-card-red">
-                <p class="section-kicker text-white/80">Verification</p>
-                <h2 class="section-title text-4xl text-white sm:text-5xl">Check authenticity before purchase.</h2>
-                <p class="mt-4 max-w-lg text-sm leading-7 text-white/85">
-                    Use the verification page to submit suspicious codes for manual review and keep batch-check support visible near the homepage hero.
-                </p>
-                <a href="{{ route('verification') }}" class="button-light mt-8">Product Verification</a>
-            </article>
-
-            <div class="grid gap-6 sm:grid-cols-2" id="wholesale">
-                <article class="info-card">
-                    <p class="card-kicker">Wholesale</p>
-                    <h3 class="card-title">Carton packs for retail partners.</h3>
-                    <p class="card-copy">Reserve this block for MOQ, stock alerts, regional shipping, and trade contact details.</p>
-                </article>
-
-                <article class="info-card">
-                    <p class="card-kicker">Support</p>
-                    <h3 class="card-title">Simple corporate support pages.</h3>
-                    <p class="card-copy">Keep terms, privacy, warranty, and product support clean and not obviously placeholder.</p>
-                    <a href="{{ route('support') }}" class="mt-6 inline-flex text-sm font-semibold text-[var(--color-red)]">Open Support</a>
-                </article>
-
-                <article class="info-card sm:col-span-2" id="news">
-                    <p class="card-kicker">News</p>
-                    <h3 class="card-title">News and blog blocks should feel maintained.</h3>
-                    <p class="card-copy">Use real launch notes, verification guides, and feature explainers instead of filler posts. The layout is already ready for that content.</p>
-                    <a href="{{ route('news') }}" class="mt-6 inline-flex text-sm font-semibold text-[var(--color-red)]">Read News</a>
-                </article>
-            </div>
-        </div>
-    </section>
 @endsection

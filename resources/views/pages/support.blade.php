@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Support | RoopDistrict')
+@section('title', 'Support | Vape')
 @section('meta_description', 'Contact support, find product help, and review verification, warranty, and retail support options.')
 
 @section('content')
@@ -45,7 +45,7 @@
                 <p class="section-kicker text-white/80">Contact</p>
                 <h2 class="section-title text-4xl text-white">Need help with a product?</h2>
                 <p class="mt-4 text-sm leading-7 text-white/85">
-                    This form now records support requests in the application log so the team can review them and follow up manually.
+                    Share your order details, batch information, and product issue so the support team can review the case and reply with the right next step.
                 </p>
             </article>
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Wholesale | RoopDistrict')
+@section('title', 'Wholesale | Vape')
 @section('meta_description', 'Wholesale inquiry page for retail partners, distributors, carton quantities, and vape product availability.')
 
 @section('content')
@@ -21,7 +21,7 @@
             <article class="info-card">
                 <p class="card-kicker">MOQ</p>
                 <h2 class="card-title">Pack and carton planning.</h2>
-                <p class="card-copy">Add minimum order quantities, pack sizes, case dimensions, and launch bundles when real inventory is ready.</p>
+                <p class="card-copy">Review minimum order quantities, carton structures, and launch bundles before placing a regional trade order.</p>
             </article>
 
             <article class="info-card">
@@ -42,7 +42,7 @@
                 <p class="section-kicker text-white/80">Trade Contact</p>
                 <h2 class="section-title text-4xl text-white">Ready for retailer onboarding.</h2>
                 <p class="mt-4 text-sm leading-7 text-white/85">
-                    The trade form now records inbound wholesale leads in the application log so the team can qualify demand and respond manually.
+                    Share your company profile, target market, and expected monthly volume so the trade team can qualify demand and respond with the right offer.
                 </p>
             </article>
 

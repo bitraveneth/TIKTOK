@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'About Us | RoopDistrict')
-@section('meta_description', 'Learn about the RoopDistrict storefront direction, product standards, and commercial vape brand positioning.')
+@section('title', 'About Us | Vape')
+@section('meta_description', 'Learn about the Vape storefront direction, product standards, and commercial vape brand positioning.')
 
 @section('content')
     <section class="page-hero">
@@ -41,7 +41,7 @@
             <p class="section-kicker">Brand Standard</p>
             <h2 class="section-title mt-4 max-w-3xl text-4xl">Clean visual language, strong product hierarchy, and maintained content matter more than heavy effects.</h2>
             <p class="mt-5 max-w-3xl text-sm leading-7 text-[var(--color-ink-soft)]">
-                The next production step is replacing placeholder text with real company details, compliance language, store policies, and product photography.
+                Every page should make it easy to find product details, verification steps, support contacts, and trade information without forcing customers through unnecessary clicks.
             </p>
         </div>
     </section>

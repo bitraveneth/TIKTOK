@@ -26,7 +26,7 @@
     ];
 @endphp
 
-@section('title', 'News | RoopDistrict')
+@section('title', 'News | Vape')
 @section('meta_description', 'News, product launch notes, verification guides, and retail content for a vape storefront.')
 
 @section('content')
@@ -37,7 +37,7 @@
                 <h1 class="page-title">Launch notes, product guides, and retail updates.</h1>
             </div>
             <p class="page-copy">
-                This page avoids the common vape-site problem of thin placeholder posts. Use it for real launch content and customer education.
+                Use this page for launch announcements, verification guidance, and retail updates that help customers and trade buyers stay informed.
             </p>
         </div>
     </section>
@@ -68,7 +68,7 @@
             <p class="section-kicker">Editorial Plan</p>
             <h2 class="section-title mt-4 max-w-3xl text-4xl">Publish content that supports products, support, and verification.</h2>
             <p class="mt-5 max-w-3xl text-sm leading-7 text-[var(--color-ink-soft)]">
-                This section is ready to move into a database-backed blog later without leaving today’s page full of dead article links.
+                Keep each article tied to a real customer question, product launch, or trade update so the news page stays useful instead of turning into filler.
             </p>
         </div>
     </section>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Product Verification | RoopDistrict')
+@section('title', 'Product Verification | Vape')
 @section('meta_description', 'Verify vape product authenticity with batch, QR, and serial code guidance.')
 
 @section('content')
@@ -22,7 +22,7 @@
                 <p class="section-kicker text-white/80">Authenticity</p>
                 <h2 class="section-title text-4xl text-white">Enter a serial or scan the code.</h2>
                 <p class="mt-4 text-sm leading-7 text-white/85">
-                    Submissions are logged for manual review so the team can check suspicious packaging, codes, and purchase details.
+                    Send the code exactly as shown on the package so the team can review suspicious items, packaging details, and purchase information.
                 </p>
             </article>
 

@@ -32,7 +32,7 @@
     ];
 @endphp
 
-@section('title', 'Products | RoopDistrict')
+@section('title', 'Products | Vape')
 @section('meta_description', 'Browse disposable vape devices, pod systems, and flavor series in a clean product catalog layout.')
 
 @section('content')
