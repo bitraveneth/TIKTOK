@@ -1,0 +1,53 @@
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import "./globals.css";
+import AgeGate from "@/components/AgeGate";
+import WarningBar from "@/components/WarningBar";
+import { site } from "@/lib/site";
+
+const logo = localFont({
+  src: "./fonts/Gonnex-Regular.otf",
+  variable: "--font-logo",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: `${site.name} — ${site.tagline}`,
+  description: site.description,
+  metadataBase: new URL(site.url),
+  openGraph: {
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/favicon.svg",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className={logo.variable}>
+      <body className="pt-9">
+        <AgeGate />
+        <WarningBar />
+        {children}
+      </body>
+    </html>
+  );
+}

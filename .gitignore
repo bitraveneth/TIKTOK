@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+dist/
+build/
+.DS_Store
+*.log
+.env*.local
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# Local brand source files (web-ready copies live in public/)
+TIKTOK ASSETS/
+

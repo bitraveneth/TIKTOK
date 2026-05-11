@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    --font-display: Impact, Haettenschweiler, "Arial Narrow Bold";
+    --font-sans: Arial, Helvetica;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-brand-cream text-brand-ink antialiased font-sans;
+  }
+  ::selection {
+    background-color: #e22a2a;
+    color: #fff3e2;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
