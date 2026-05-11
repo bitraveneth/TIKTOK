@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bagel_Fat_One, Inter } from "next/font/google";
+import { Bagel_Fat_One, Inter, Pacifico } from "next/font/google";
 import "./globals.css";
 import AgeGate from "@/components/AgeGate";
 import { site } from "@/lib/site";
@@ -14,6 +14,13 @@ const display = Bagel_Fat_One({
 const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const script = Pacifico({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-script",
   display: "swap",
 });
 
@@ -48,7 +55,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable} ${script.variable}`}
+    >
       <body>
         <AgeGate />
         {children}
