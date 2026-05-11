@@ -8,7 +8,6 @@ import clsx from "clsx";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -18,21 +17,11 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    const update = () => setIsMobile(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-
-  useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [open]);
-
-  const overDarkHero = isMobile && !scrolled && !open;
 
   return (
     <header
@@ -50,7 +39,7 @@ export default function Navbar() {
               : "border-transparent bg-transparent",
           )}
         >
-          <Logo size="md" tone={overDarkHero ? "cream" : "ink"} />
+          <Logo size="md" />
 
           <ul className="hidden items-center gap-8 md:flex">
             {navLinks.map((l) => (
@@ -76,20 +65,12 @@ export default function Navbar() {
               onClick={() => setOpen((v) => !v)}
               aria-label="Open menu"
               aria-expanded={open}
-              className={clsx(
-                "grid h-10 w-10 place-items-center rounded-full border transition md:hidden",
-                overDarkHero
-                  ? "border-brand-cream/30 bg-brand-cream/15 backdrop-blur"
-                  : "border-brand-ink/15 bg-brand-cream",
-              )}
+              className="grid h-10 w-10 place-items-center rounded-full border border-brand-ink/15 bg-brand-cream md:hidden"
             >
               <span className="sr-only">Menu</span>
               <svg
                 viewBox="0 0 24 24"
-                className={clsx(
-                  "h-5 w-5",
-                  overDarkHero ? "text-brand-cream" : "text-brand-ink",
-                )}
+                className="h-5 w-5 text-brand-ink"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
