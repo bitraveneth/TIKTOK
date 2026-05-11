@@ -30,7 +30,7 @@ export default function Logo({
         height={dims.h * 4}
         priority
         className={clsx(
-          "object-contain",
+          "object-contain transition-[filter] duration-300",
           tone === "cream" && "brightness-0 invert",
         )}
         style={{ width: dims.w, height: dims.h }}
