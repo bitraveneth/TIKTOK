@@ -41,7 +41,7 @@ export default function HeroCarousel() {
         {heroDeck.map((card) => (
           <SwiperSlide
             key={card.id}
-            className="!w-[280px] sm:!w-[420px] md:!w-[560px] lg:!w-[680px] xl:!w-[820px]"
+            className="!w-[260px] sm:!w-[420px] md:!w-[560px] lg:!w-[680px] xl:!w-[820px]"
           >
             {({ isActive }) => (
               <div

@@ -77,29 +77,35 @@ function FlavorCard({
   return (
     <Link
       href={`/products/${flavor.productSlug}`}
-      className="relative block"
+      className="relative block h-full w-full"
       style={{ transform: `rotate(${tilt})` }}
     >
-      <div className="absolute -inset-1.5 -z-10 rounded-[28px] bg-brand-ink" />
+      <div className="absolute -inset-1 -z-10 rounded-[26px] bg-brand-ink sm:-inset-1.5 sm:rounded-[28px]" />
       <div
-        className={`relative overflow-hidden rounded-[24px] border-2 border-brand-ink bg-brand-cream transition hover:-translate-x-0.5 hover:-translate-y-0.5 ${
-          isHero ? "shadow-[8px_8px_0_0_#1A0606]" : "shadow-[5px_5px_0_0_#1A0606]"
+        className={`relative h-full overflow-hidden rounded-[20px] border-2 border-brand-ink bg-brand-cream transition hover:-translate-x-0.5 hover:-translate-y-0.5 sm:rounded-[24px] ${
+          isHero
+            ? "shadow-[6px_6px_0_0_#1A0606] sm:shadow-[8px_8px_0_0_#1A0606]"
+            : "shadow-[4px_4px_0_0_#1A0606] sm:shadow-[5px_5px_0_0_#1A0606]"
         }`}
       >
-        <div className={`relative ${isHero ? "aspect-[3/4]" : "aspect-[3/4]"}`}>
+        <div className="relative aspect-[3/4] h-full w-full">
           <Image
             src={flavor.image}
             alt={flavor.name}
             fill
-            sizes={isHero ? "(min-width: 1024px) 30vw, 70vw" : "(min-width: 1024px) 22vw, 45vw"}
+            sizes={
+              isHero
+                ? "(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 80vw"
+                : "(min-width: 1024px) 22vw, (min-width: 640px) 33vw, 45vw"
+            }
             className="object-cover"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-ink/75 via-transparent to-transparent" />
 
           <span
             aria-hidden
-            className={`absolute -left-2 top-4 rotate-[-8deg] rounded-md border-2 border-brand-ink bg-brand-cream px-2.5 py-0.5 font-display shadow-[2px_2px_0_0_#1A0606] ${
-              isHero ? "text-base" : "text-xs"
+            className={`absolute -left-1.5 top-3 rotate-[-8deg] rounded-md border-2 border-brand-ink bg-brand-cream px-2 py-0.5 font-display shadow-[2px_2px_0_0_#1A0606] sm:-left-2 sm:top-4 sm:px-2.5 ${
+              isHero ? "text-sm sm:text-base" : "text-[10px] sm:text-xs"
             }`}
           >
             {badge}
@@ -107,31 +113,31 @@ function FlavorCard({
 
           <span
             aria-hidden
-            className={`absolute right-3 top-3 grid place-items-center rounded-full border-2 border-brand-ink shadow-[3px_3px_0_0_#1A0606] ${
-              isHero ? "h-14 w-14" : "h-10 w-10"
+            className={`absolute right-2.5 top-2.5 grid place-items-center rounded-full border-2 border-brand-ink shadow-[2px_2px_0_0_#1A0606] sm:right-3 sm:top-3 sm:shadow-[3px_3px_0_0_#1A0606] ${
+              isHero ? "h-10 w-10 sm:h-14 sm:w-14" : "h-7 w-7 sm:h-10 sm:w-10"
             }`}
             style={{ background: flavor.accent }}
           >
-            <span className="h-2.5 w-2.5 rounded-full bg-brand-cream" />
+            <span className="h-2 w-2 rounded-full bg-brand-cream sm:h-2.5 sm:w-2.5" />
           </span>
 
-          <div className={`absolute inset-x-0 bottom-0 ${isHero ? "p-5" : "p-3"}`}>
+          <div className={`absolute inset-x-0 bottom-0 ${isHero ? "p-3 sm:p-5" : "p-2.5 sm:p-3"}`}>
             <p
-              className={`font-semibold uppercase tracking-[0.18em] text-brand-cream/75 ${
-                isHero ? "text-[10px]" : "text-[9px]"
+              className={`font-semibold uppercase tracking-[0.16em] text-brand-cream/75 sm:tracking-[0.18em] ${
+                isHero ? "text-[10px]" : "text-[8px] sm:text-[9px]"
               }`}
             >
               {flavor.productName}
             </p>
             <p
-              className={`mt-1 font-display leading-tight text-brand-cream ${
-                isHero ? "text-3xl md:text-4xl" : "text-lg md:text-xl"
+              className={`mt-0.5 font-display leading-tight text-brand-cream sm:mt-1 ${
+                isHero ? "text-2xl sm:text-3xl md:text-4xl" : "text-sm sm:text-lg md:text-xl"
               }`}
             >
               {flavor.name}
             </p>
             {isHero ? (
-              <p className="mt-1.5 text-[10px] uppercase tracking-[0.16em] text-brand-cream/70">
+              <p className="mt-1 hidden text-[10px] uppercase tracking-[0.16em] text-brand-cream/70 sm:mt-1.5 sm:block">
                 {flavor.notes}
               </p>
             ) : null}
@@ -167,7 +173,7 @@ export default function FlavorShowcase() {
   return (
     <section
       id="flavors"
-      className="relative overflow-hidden bg-brand-cream py-20 md:py-24"
+      className="relative overflow-hidden bg-brand-cream py-16 sm:py-20 md:py-24"
     >
       <div
         aria-hidden
@@ -180,23 +186,23 @@ export default function FlavorShowcase() {
       />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center gap-4 text-center">
-          <div className="relative inline-flex items-center gap-2.5 rounded-full bg-brand-ink px-5 py-1.5 text-brand-cream">
+        <div className="flex flex-col items-center gap-3 text-center sm:gap-4">
+          <div className="relative inline-flex items-center gap-2 rounded-full bg-brand-ink px-4 py-1.5 text-brand-cream sm:gap-2.5 sm:px-5">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-red" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.22em]">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] sm:text-[11px] sm:tracking-[0.22em]">
               Combo of the month
             </span>
-            <span className="absolute -right-3 -top-3 rounded-full bg-brand-red px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-brand-cream">
+            <span className="absolute -right-2 -top-2.5 rounded-full bg-brand-red px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-brand-cream sm:-right-3 sm:-top-3 sm:px-2 sm:text-[10px]">
               HOT
             </span>
           </div>
 
-          <h2 className="relative font-display text-5xl leading-[0.9] text-brand-ink text-balance sm:text-6xl md:text-7xl lg:text-[100px]">
+          <h2 className="relative font-display text-[40px] leading-[0.92] text-brand-ink text-balance sm:text-6xl md:text-7xl lg:text-[100px]">
             <span className="relative inline-block">
               Three drops,
               <span
                 aria-hidden
-                className="absolute inset-x-0 -bottom-1 h-2 origin-left -rotate-1 rounded-full bg-brand-red md:h-2.5"
+                className="absolute inset-x-0 -bottom-1 h-1.5 origin-left -rotate-1 rounded-full bg-brand-red sm:h-2 md:h-2.5"
               />
             </span>{" "}
             <br className="md:hidden" />
@@ -210,31 +216,15 @@ export default function FlavorShowcase() {
             </span>
           </h2>
 
-          <p className="mt-2 max-w-xl text-brand-ink/70">
+          <p className="mt-1 max-w-xl text-sm text-brand-ink/70 sm:mt-2 sm:text-base">
             Our signature flavor pinned in the middle, surrounded by two
             rotating picks. Watch the combo shuffle every few seconds.
           </p>
         </div>
 
-        <div className="mt-14 grid items-center gap-6 md:mt-16 md:grid-cols-3 md:gap-6 lg:gap-8">
-          <div className="relative h-[360px] md:h-[480px] lg:h-[520px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`L-${leftFlavor.productSlug}-${leftFlavor.flavorId}`}
-                {...cardMotion}
-                className="absolute inset-0"
-              >
-                <FlavorCard
-                  flavor={leftFlavor}
-                  badge={`№${String(leftIndex + 1).padStart(2, "0")}`}
-                  tilt="-3deg"
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          <div className="relative z-10 md:scale-110">
-            <div className="relative">
+        <div className="mt-10 sm:mt-14 md:mt-16">
+          <div className="mx-auto flex max-w-[280px] sm:max-w-xs md:hidden">
+            <div className="relative w-full">
               <FlavorCard
                 flavor={ANCHOR_FLAVOR}
                 badge="ANCHOR"
@@ -242,35 +232,102 @@ export default function FlavorShowcase() {
                 size="hero"
               />
               <Starburst
-                className="pointer-events-none absolute -bottom-4 -right-4 rotate-[15deg]"
-                size={56}
+                className="pointer-events-none absolute -bottom-3 -right-3 rotate-[15deg]"
+                size={44}
                 fill="#FFD93D"
               />
             </div>
           </div>
 
-          <div className="relative h-[360px] md:h-[480px] lg:h-[520px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`R-${rightFlavor.productSlug}-${rightFlavor.flavorId}`}
-                {...cardMotion}
-                className="absolute inset-0"
-              >
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:hidden">
+            <div className="relative aspect-[3/4]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`L-m-${leftFlavor.productSlug}-${leftFlavor.flavorId}`}
+                  {...cardMotion}
+                  className="absolute inset-0"
+                >
+                  <FlavorCard
+                    flavor={leftFlavor}
+                    badge={`№${String(leftIndex + 1).padStart(2, "0")}`}
+                    tilt="-2deg"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            <div className="relative aspect-[3/4]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`R-m-${rightFlavor.productSlug}-${rightFlavor.flavorId}`}
+                  {...cardMotion}
+                  className="absolute inset-0"
+                >
+                  <FlavorCard
+                    flavor={rightFlavor}
+                    badge={`№${String(rightIndex + 1).padStart(2, "0")}`}
+                    tilt="2deg"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          <div className="hidden md:grid md:grid-cols-3 md:items-center md:gap-6 lg:gap-8">
+            <div className="relative aspect-[3/4]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`L-d-${leftFlavor.productSlug}-${leftFlavor.flavorId}`}
+                  {...cardMotion}
+                  className="absolute inset-0"
+                >
+                  <FlavorCard
+                    flavor={leftFlavor}
+                    badge={`№${String(leftIndex + 1).padStart(2, "0")}`}
+                    tilt="-3deg"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <div className="relative z-10 md:scale-110">
+              <div className="relative">
                 <FlavorCard
-                  flavor={rightFlavor}
-                  badge={`№${String(rightIndex + 1).padStart(2, "0")}`}
-                  tilt="3deg"
+                  flavor={ANCHOR_FLAVOR}
+                  badge="ANCHOR"
+                  tilt="0deg"
+                  size="hero"
                 />
-              </motion.div>
-            </AnimatePresence>
+                <Starburst
+                  className="pointer-events-none absolute -bottom-4 -right-4 rotate-[15deg]"
+                  size={56}
+                  fill="#FFD93D"
+                />
+              </div>
+            </div>
+
+            <div className="relative aspect-[3/4]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`R-d-${rightFlavor.productSlug}-${rightFlavor.flavorId}`}
+                  {...cardMotion}
+                  className="absolute inset-0"
+                >
+                  <FlavorCard
+                    flavor={rightFlavor}
+                    badge={`№${String(rightIndex + 1).padStart(2, "0")}`}
+                    tilt="3deg"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-3 text-center md:mt-14">
-          <div className="flex flex-wrap items-center gap-3">
+        <div className="mt-10 flex flex-col items-center gap-3 text-center sm:mt-12 md:mt-14">
+          <div className="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center sm:flex-wrap sm:justify-center">
             <Link
               href="/products/tiktok-60k"
-              className="group inline-flex items-center gap-2 rounded-full border-2 border-brand-ink bg-brand-red px-7 py-3.5 font-display text-base text-brand-cream shadow-[5px_5px_0_0_#1A0606] transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_#1A0606] md:text-lg"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-ink bg-brand-red px-6 py-3 font-display text-base text-brand-cream shadow-[4px_4px_0_0_#1A0606] transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_#1A0606] sm:px-7 sm:py-3.5 sm:shadow-[5px_5px_0_0_#1A0606] sm:hover:shadow-[7px_7px_0_0_#1A0606] md:text-lg"
             >
               Taste the combo
               <svg
@@ -288,12 +345,12 @@ export default function FlavorShowcase() {
             </Link>
             <Link
               href="#products"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-brand-ink bg-brand-cream px-7 py-3 font-display text-base text-brand-ink shadow-[5px_5px_0_0_#1A0606] transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_#1A0606] md:text-lg"
+              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-ink bg-brand-cream px-6 py-3 font-display text-base text-brand-ink shadow-[4px_4px_0_0_#1A0606] transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_#1A0606] sm:px-7 sm:shadow-[5px_5px_0_0_#1A0606] sm:hover:shadow-[7px_7px_0_0_#1A0606] md:text-lg"
             >
               See all flavors
             </Link>
           </div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-ink/55">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-ink/55 sm:tracking-[0.22em]">
             Anchor stays fixed · Sides shuffle every 3 seconds
           </p>
         </div>
