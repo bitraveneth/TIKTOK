@@ -15,8 +15,13 @@ export const site = {
 };
 
 export const navLinks = [
-  { label: "Devices", href: "#products" },
-  { label: "Flavors", href: "#flavors" },
-  { label: "Shop", href: "#products" },
-  { label: "About", href: "#about" },
+  { label: "Devices", href: "/#products" },
+  { label: "Flavors", href: "/#flavors" },
+  { label: "About", href: "/#about" },
+  { label: "FAQ", href: "/faq" },
 ];
+
+export const primaryCta = {
+  label: "Verify product",
+  href: "/verify",
+};

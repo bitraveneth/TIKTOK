@@ -1,20 +1,21 @@
+import Link from "next/link";
 import { site, navLinks } from "@/lib/site";
 import Logo from "./Logo";
 
 const columns = [
   {
-    title: "Shop",
+    title: "Explore",
     links: [
-      { label: "All products", href: "#products" },
-      { label: "New arrivals", href: "#products" },
-      { label: "Flavors", href: "#flavors" },
-      { label: "Devices", href: "#products" },
+      { label: "Devices", href: "/#products" },
+      { label: "Flavors", href: "/#flavors" },
+      { label: "Combo of the month", href: "/#flavors" },
+      { label: "Our story", href: "/#about" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About", href: "#about" },
+      { label: "About", href: "/#about" },
       { label: "Lab reports", href: "#" },
       { label: "Sustainability", href: "#" },
       { label: "Press", href: "#" },
@@ -24,9 +25,9 @@ const columns = [
     title: "Support",
     links: [
       { label: "Contact", href: `mailto:${site.email}` },
-      { label: "Shipping", href: "#" },
-      { label: "Returns", href: "#" },
-      { label: "FAQ", href: "#" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Verify product", href: "/verify" },
+      { label: "Wholesale", href: `mailto:${site.email}` },
     ],
   },
 ];
@@ -82,12 +83,12 @@ export default function Footer() {
                 <ul className="mt-4 space-y-2">
                   {col.links.map((l) => (
                     <li key={l.label}>
-                      <a
+                      <Link
                         href={l.href}
                         className="text-sm text-brand-cream/90 transition hover:text-brand-cream"
                       >
                         {l.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -112,20 +113,20 @@ export default function Footer() {
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {navLinks.map((l) => (
               <li key={l.label}>
-                <a href={l.href} className="hover:text-brand-cream">
+                <Link href={l.href} className="hover:text-brand-cream">
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
-              <a href="#" className="hover:text-brand-cream">
+              <Link href="#" className="hover:text-brand-cream">
                 Privacy
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-brand-cream">
+              <Link href="#" className="hover:text-brand-cream">
                 Terms
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

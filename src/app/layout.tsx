@@ -3,6 +3,7 @@ import { Bagel_Fat_One, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import AgeGate from "@/components/AgeGate";
+import WarningBar from "@/components/WarningBar";
 import { site } from "@/lib/site";
 
 const display = Bagel_Fat_One({
@@ -59,8 +60,9 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${sans.variable} ${logo.variable}`}
     >
-      <body>
+      <body className="pt-9">
         <AgeGate />
+        <WarningBar />
         {children}
       </body>
     </html>
