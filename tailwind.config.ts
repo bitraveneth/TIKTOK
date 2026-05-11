@@ -18,7 +18,6 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        script: ["var(--font-script)", "cursive"],
       },
       boxShadow: {
         "brand-lg": "0 30px 60px -20px rgba(226, 42, 42, 0.35)",
