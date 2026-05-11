@@ -350,9 +350,6 @@ export default function FlavorShowcase() {
               See all flavors
             </Link>
           </div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-ink/55 sm:tracking-[0.22em]">
-            Anchor stays fixed · Sides shuffle every 3 seconds
-          </p>
         </div>
       </div>
     </section>

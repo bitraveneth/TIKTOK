@@ -17,8 +17,9 @@ export default function Logo({
   size?: "sm" | "md" | "lg";
 }) {
   const fontSize = sizeMap[size];
-  const primary = tone === "ink" ? "text-brand-ink" : "text-brand-cream";
-  const accent = tone === "ink" ? "text-brand-red" : "text-brand-ink";
+  const primary = tone === "ink" ? "text-brand-red" : "text-brand-cream";
+  const accent =
+    tone === "ink" ? "text-brand-red-dark" : "text-brand-cream-deep";
 
   return (
     <a
