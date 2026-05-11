@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="#FFF3E2"/>
-  <text x="50%" y="44%" text-anchor="middle" fill="#000" font-family="Arial Black, sans-serif" font-weight="900" font-size="22" letter-spacing="-1">TikTok</text>
-  <text x="50%" y="72%" text-anchor="middle" fill="#E22A2A" font-family="Arial Black, sans-serif" font-weight="900" font-size="13" letter-spacing="3">VAPE</text>
-  <rect x="11" y="9" width="3" height="22" fill="#25F4EE" opacity="0.85"/>
-  <rect x="50" y="9" width="3" height="22" fill="#FE2C55" opacity="0.85"/>
+  <text x="50%" y="48%" text-anchor="middle" fill="#1A0606" font-family="'Bagel Fat One','Arial Black','Helvetica Neue',sans-serif" font-weight="900" font-size="20" letter-spacing="-0.5">TIK<tspan fill="#E22A2A">·</tspan>TOK</text>
+  <text x="50%" y="76%" text-anchor="middle" fill="#E22A2A" font-family="'Bagel Fat One','Arial Black','Helvetica Neue',sans-serif" font-weight="900" font-size="11" letter-spacing="3">VAPE</text>
 </svg>

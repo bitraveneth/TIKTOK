@@ -1,6 +1,29 @@
 import { site } from "@/lib/site";
-import Image from "next/image";
 import clsx from "clsx";
+
+const sizeMap = {
+  sm: {
+    primary: 20,
+    secondary: 8,
+    tracking: 0.32,
+    gap: -3,
+    paddingLeft: 1,
+  },
+  md: {
+    primary: 30,
+    secondary: 11,
+    tracking: 0.34,
+    gap: -5,
+    paddingLeft: 2,
+  },
+  lg: {
+    primary: 48,
+    secondary: 16,
+    tracking: 0.36,
+    gap: -8,
+    paddingLeft: 3,
+  },
+};
 
 export default function Logo({
   className,
@@ -11,30 +34,46 @@ export default function Logo({
   tone?: "ink" | "cream";
   size?: "sm" | "md" | "lg";
 }) {
-  const dims = {
-    sm: { w: 70, h: 28 },
-    md: { w: 100, h: 40 },
-    lg: { w: 160, h: 64 },
-  }[size];
+  const s = sizeMap[size];
+  const primary = tone === "ink" ? "text-brand-ink" : "text-brand-cream";
+  const accent = tone === "ink" ? "text-brand-red" : "text-brand-ink";
 
   return (
     <a
       href="#top"
       aria-label={`${site.name} home`}
-      className={clsx("inline-flex items-center", className)}
+      className={clsx(
+        "group inline-flex flex-col leading-none transition",
+        className,
+      )}
     >
-      <Image
-        src="/brand/tiktok-vape-logo.png"
-        alt={site.name}
-        width={dims.w * 4}
-        height={dims.h * 4}
-        priority
+      <span
         className={clsx(
-          "object-contain transition-[filter] duration-300",
-          tone === "cream" && "brightness-0 invert",
+          "font-display tracking-tight leading-none whitespace-nowrap",
+          primary,
         )}
-        style={{ width: dims.w, height: dims.h }}
-      />
+        style={{ fontSize: s.primary }}
+      >
+        TIK
+        <span
+          aria-hidden
+          className={clsx(accent, "inline-block transition-transform duration-300 group-hover:rotate-[-12deg]")}
+        >
+          ·
+        </span>
+        TOK
+      </span>
+      <span
+        className={clsx("font-display leading-none whitespace-nowrap", accent)}
+        style={{
+          fontSize: s.secondary,
+          letterSpacing: `${s.tracking}em`,
+          marginTop: s.gap,
+          paddingLeft: s.paddingLeft,
+        }}
+      >
+        VAPE
+      </span>
     </a>
   );
 }

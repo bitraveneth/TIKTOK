@@ -39,7 +39,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]">
           <div>
-            <Logo tone="cream" />
+            <Logo tone="cream" size="lg" />
             <p className="mt-5 max-w-sm text-brand-cream/80">
               {site.description}
             </p>
