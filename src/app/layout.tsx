@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Bagel_Fat_One, Inter } from "next/font/google";
+// To use the Gonnex logo font: drop the .otf into src/app/fonts/ and
+// uncomment the next line + the `logo` definition below.
+// import localFont from "next/font/local";
 import "./globals.css";
 import AgeGate from "@/components/AgeGate";
 import { site } from "@/lib/site";
@@ -16,6 +19,13 @@ const sans = Inter({
   variable: "--font-sans",
   display: "swap",
 });
+
+// Logo font. Uncomment once Gonnex-Regular.otf is added to src/app/fonts/.
+// const logo = localFont({
+//   src: "./fonts/Gonnex-Regular.otf",
+//   variable: "--font-logo",
+//   display: "swap",
+// });
 
 export const metadata: Metadata = {
   title: `${site.name} — ${site.tagline}`,
@@ -48,7 +58,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+    <html
+      lang="en"
+      // Add ${logo.variable} after the existing classes once Gonnex is wired up.
+      className={`${display.variable} ${sans.variable}`}
+    >
       <body>
         <AgeGate />
         {children}

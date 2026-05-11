@@ -31,8 +31,8 @@ export default function Logo({
       )}
       style={{ fontSize }}
     >
-      <span className={clsx("font-display", primary)}>TikTok</span>
-      <span className={clsx("font-display", accent)}>Vape</span>
+      <span className={clsx("font-logo", primary)}>TikTok</span>
+      <span className={clsx("font-logo", accent)}>Vape</span>
     </a>
   );
 }
