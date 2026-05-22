@@ -28,8 +28,8 @@ const faqs: FaqItem[] = [
         >
           product verifier
         </Link>{" "}
-        and we'll instantly confirm it came from our facility. If the seal is
-        broken, the box looks off, or the code fails — it's not real. Walk away.
+        and we&apos;ll instantly confirm it came from our facility. If the seal is
+        broken, the box looks off, or the code fails — it&apos;s not real. Walk away.
       </>
     ),
   },
@@ -171,7 +171,7 @@ export default function Faq() {
         <div className="mt-12 flex flex-col items-start justify-between gap-4 rounded-3xl border-2 border-brand-ink bg-brand-red p-6 text-brand-cream shadow-[6px_6px_0_0_#1A0606] sm:flex-row sm:items-center sm:p-7">
           <div>
             <p className="font-display text-[11px] uppercase tracking-[0.22em] text-brand-cream/70">
-              Didn't find your answer?
+              Didn&apos;t find your answer?
             </p>
             <p className="mt-1 font-display text-xl leading-tight sm:text-2xl">
               Slide into our inbox — we reply within a day.

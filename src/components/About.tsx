@@ -1,10 +1,11 @@
+import { totalFlavorCount } from "@/lib/products";
 import StorySlideshow from "./StorySlideshow";
 
 const stats = [
-  { value: "60K", label: "Puffs per device" },
-  { value: "11+", label: "Signature flavors" },
+  { value: "60K", label: "Max puff count" },
+  { value: String(totalFlavorCount()), label: "Flavors across lineup" },
   { value: "5%", label: "Salt nicotine" },
-  { value: "98%", label: "Customers re-order" },
+  { value: "4", label: "Devices to choose" },
 ];
 
 export default function About() {
@@ -17,9 +18,9 @@ export default function About() {
 
             <div className="absolute -bottom-6 -right-4 z-10 rounded-3xl border border-brand-ink/10 bg-brand-cream px-5 py-4 shadow-brand-card md:-right-8">
               <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-red">
-                Made in
+                Available
               </p>
-              <p className="font-display text-2xl text-brand-ink">Portland, OR</p>
+              <p className="font-display text-2xl text-brand-ink">Worldwide</p>
             </div>
             <div className="absolute -top-6 -left-4 z-10 hidden rotate-[-6deg] rounded-3xl border border-brand-red/30 bg-brand-red px-5 py-4 text-brand-cream shadow-brand-card md:block">
               <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-cream/80">
@@ -42,7 +43,8 @@ export default function About() {
             <p className="mt-5 max-w-xl text-brand-ink/70">
               TikTok Vape was born from a simple idea: a disposable should taste
               better, last longer, and look way cooler than anything in the
-              corner store. Eleven flavors, two devices, zero compromises.
+              corner store. Four devices from 8K to 60K and dozens of flavors,
+              zero compromises.
             </p>
             <p className="mt-4 max-w-xl text-brand-ink/70">
               Every device is lab-tested for purity and consistency, with a

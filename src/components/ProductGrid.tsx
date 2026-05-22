@@ -1,7 +1,8 @@
-import { products } from "@/lib/products";
+import { products, totalFlavorCount } from "@/lib/products";
 import ProductCard from "./ProductCard";
 
 export default function ProductGrid() {
+  const flavorCount = totalFlavorCount();
   return (
     <section id="products" className="relative bg-brand-cream py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -12,11 +13,12 @@ export default function ProductGrid() {
               The lineup
             </span>
             <h2 className="mt-3 font-display text-4xl leading-[1.0] text-brand-ink sm:text-5xl md:text-6xl">
-              Two devices. <span className="text-brand-red">Eleven flavors.</span>
+              Four devices.{" "}
+              <span className="text-brand-red">{flavorCount} flavors.</span>
             </h2>
             <p className="mt-4 text-brand-ink/65">
-              Pick your puff count and your favourite drop. Every device ships
-              ready to vape — no charging, no refills, no nonsense.
+              From pocket 8K and 9,900 screen models to 50K and 60K flagships —
+              pick your puff count and your favourite drop.
             </p>
           </div>
           <a
@@ -39,7 +41,7 @@ export default function ProductGrid() {
           </a>
         </div>
 
-        <div className="mt-12 grid gap-6 md:gap-8 lg:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 md:gap-8">
           {products.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

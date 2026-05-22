@@ -1,3 +1,5 @@
+import { lw03Flavors, lw04Flavors } from "./lw-flavors";
+
 export type Flavor = {
   id: string;
   name: string;
@@ -12,7 +14,7 @@ export type Product = {
   slug: string;
   name: string;
   shortName: string;
-  device: "D59016" | "T56018";
+  device: "D59016" | "T56018" | "LW03" | "LW04";
   headline: string;
   tagline: string;
   description: string;
@@ -177,14 +179,73 @@ export const products: Product[] = [
       { label: "Display", value: "Status indicator" },
     ],
   },
+  {
+    id: "tiktok-8k",
+    slug: "tiktok-8k",
+    name: "TikTok 8K",
+    shortName: "8K",
+    device: "LW03",
+    headline: "Rechargeable everyday",
+    tagline: "8,000 puffs, Type-C ready",
+    description:
+      "LW03 is a pocket-friendly rechargeable disposable with a 1.0Ω mesh coil, 500 mAh battery, and fifteen fruit-forward flavors. Anti-leak design and USB-C charging keep you going.",
+    puffs: "8,000",
+    tag: "New",
+    cover: "/products/lw03/flavors/01-cherry-peach.png",
+    heroLifestyle: "/products/lw03/hero/poster-1.png",
+    accent: "#E22A2A",
+    flavors: lw03Flavors,
+    specs: [
+      { label: "Puffs", value: "8,000" },
+      { label: "Battery", value: "500 mAh" },
+      { label: "Nicotine", value: "50 mg/ml" },
+      { label: "Coil", value: "1.0Ω mesh" },
+      { label: "Charging", value: "Type-C" },
+      { label: "Feature", value: "Anti-leak" },
+    ],
+  },
+  {
+    id: "tiktok-9900",
+    slug: "tiktok-9900",
+    name: "TikTok 9900",
+    shortName: "9900",
+    device: "LW04",
+    headline: "Digital screen flagship",
+    tagline: "9,900 puffs with live status",
+    description:
+      "LW04 pairs a vertical digital display with mesh-coil performance and fifteen bold flavors. Rechargeable via Type-C, 500 mAh battery, and anti-leak engineering in a premium shell.",
+    puffs: "9,900",
+    tag: "New",
+    cover: "/products/lw04/flavors/berry-grape.jpg",
+    heroLifestyle: "/products/lw04/hero/main.jpg",
+    accent: "#8B5FBF",
+    flavors: lw04Flavors,
+    specs: [
+      { label: "Puffs", value: "9,900" },
+      { label: "Battery", value: "500 mAh" },
+      { label: "Nicotine", value: "50 mg/ml" },
+      { label: "Coil", value: "1.0Ω mesh" },
+      { label: "Charging", value: "Type-C" },
+      { label: "Display", value: "Digital screen" },
+    ],
+  },
 ];
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
 }
 
+export function getOtherProducts(slug: string): Product[] {
+  return products.filter((p) => p.slug !== slug);
+}
+
+/** @deprecated Use getOtherProducts */
 export function getOtherProduct(slug: string): Product | undefined {
-  return products.find((p) => p.slug !== slug);
+  return getOtherProducts(slug)[0];
+}
+
+export function totalFlavorCount(): number {
+  return products.reduce((sum, p) => sum + p.flavors.length, 0);
 }
 
 export const deviceGallery: Record<
@@ -219,6 +280,33 @@ export const deviceGallery: Record<
       "/products/t56018/hero/hero-1.jpg",
       "/products/t56018/hero/hero-2.jpg",
       "/products/t56018/hero/hero-3.jpg",
+    ],
+  },
+  LW03: {
+    angles: Array.from({ length: 15 }, (_, i) => {
+      const n = String(i + 1).padStart(2, "0");
+      return `/products/lw03/hero/angle-${n}.png`;
+    }),
+    lifestyle: [
+      "/products/lw03/hero/poster-1.png",
+      "/products/lw03/hero/poster-2.png",
+      ...Array.from({ length: 6 }, (_, i) => {
+        const n = String(i + 1).padStart(2, "0");
+        return `/products/lw03/lifestyle/box-${n}.png`;
+      }),
+    ],
+  },
+  LW04: {
+    angles: Array.from({ length: 15 }, (_, i) => {
+      const n = String(i + 1).padStart(2, "0");
+      return `/products/lw04/hero/angle-${n}.png`;
+    }),
+    lifestyle: [
+      "/products/lw04/hero/main.jpg",
+      ...Array.from({ length: 5 }, (_, i) => {
+        const n = String(i + 1).padStart(2, "0");
+        return `/products/lw04/lifestyle/life-${n}.jpg`;
+      }),
     ],
   },
 };
@@ -259,6 +347,18 @@ export const heroDeck = [
     label: "Sour Lemon",
     sub: "TikTok 60K",
     image: "/products/d59016/lifestyle/life-3.jpg",
+  },
+  {
+    id: "h7",
+    label: "Digital screen lineup",
+    sub: "TikTok 9900",
+    image: "/products/lw04/hero/main-2.jpg",
+  },
+  {
+    id: "h8",
+    label: "Rechargeable series",
+    sub: "TikTok 8K",
+    image: "/products/lw03/hero/poster-2.png",
   },
 ];
 

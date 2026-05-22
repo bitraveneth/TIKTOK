@@ -80,7 +80,7 @@ export default function VerifyProduct() {
           <p className="mt-5 max-w-xl text-base text-brand-ink/70 sm:text-lg">
             Counterfeits are everywhere in this category. Every TikTok device
             ships with a one-time scratch-off code under the wrap — drop it in
-            below, and we'll tell you in seconds whether it came straight from
+            below, and we&apos;ll tell you in seconds whether it came straight from
             our facility or is a knockoff pretending to be.
           </p>
 
@@ -222,7 +222,7 @@ export default function VerifyProduct() {
                     </span>
                     <div className="min-w-0">
                       <p className="font-display text-base leading-snug">
-                        We couldn't verify that code.
+                        We couldn&apos;t verify that code.
                       </p>
                       <p className="mt-1 text-xs leading-relaxed text-brand-ink/65">
                         Double-check the digits, or email{" "}
@@ -264,7 +264,7 @@ export default function VerifyProduct() {
               </svg>
               <p>
                 Each TikTok ships with a single, one-time-use code. Once
-                verified it can't be checked again from a new device — that's
+                verified it can&apos;t be checked again from a new device — that&apos;s
                 how we keep counterfeiters out.
               </p>
             </div>

@@ -5,7 +5,7 @@ import ProductFlavorPicker from "@/components/ProductFlavorPicker";
 import {
   deviceGallery,
   getProduct,
-  getOtherProduct,
+  getOtherProducts,
   products,
 } from "@/lib/products";
 import { site } from "@/lib/site";
@@ -41,7 +41,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   if (!product) notFound();
 
   const gallery = deviceGallery[product.device];
-  const other = getOtherProduct(product.slug);
+  const others = getOtherProducts(product.slug);
 
   return (
     <main>
@@ -149,7 +149,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {other ? (
+      {others.length > 0 ? (
         <section className="relative bg-brand-cream pb-24 md:pb-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
@@ -159,7 +159,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   Also in the lineup
                 </span>
                 <h2 className="mt-3 font-display text-3xl leading-[1.0] text-brand-ink sm:text-4xl md:text-5xl">
-                  Check out {other.name}
+                  More TikTok devices
                 </h2>
               </div>
               <Link
@@ -182,8 +182,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </Link>
             </div>
 
-            <div className="mt-10 max-w-2xl">
-              <ProductCard product={other} />
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {others.map((other) => (
+                <ProductCard key={other.id} product={other} />
+              ))}
             </div>
           </div>
         </section>

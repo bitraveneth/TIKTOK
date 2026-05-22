@@ -1,7 +1,7 @@
 "use client";
 
 import { heroDeck } from "@/lib/products";
-import Image from "next/image";
+import HeroSlideImage from "./HeroSlideImage";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
@@ -53,12 +53,9 @@ export default function MobileHero() {
                           : ""
                       }`}
                     >
-                      <Image
+                      <HeroSlideImage
                         src={card.image}
                         alt={card.label}
-                        fill
-                        sizes="100vw"
-                        className="object-cover"
                         priority={i === 0}
                       />
                     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { heroDeck } from "@/lib/products";
-import Image from "next/image";
+import HeroSlideImage from "./HeroSlideImage";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay, Pagination, Keyboard } from "swiper/modules";
 
@@ -38,7 +38,7 @@ export default function HeroCarousel() {
         pagination={{ clickable: true }}
         className="tiktok-coverflow !pt-6 !pb-2"
       >
-        {heroDeck.map((card) => (
+        {heroDeck.map((card, index) => (
           <SwiperSlide
             key={card.id}
             className="!w-[260px] sm:!w-[420px] md:!w-[560px] lg:!w-[680px] xl:!w-[820px]"
@@ -52,13 +52,10 @@ export default function HeroCarousel() {
                 }`}
                 style={{ aspectRatio: "16 / 9" }}
               >
-                <Image
+                <HeroSlideImage
                   src={card.image}
                   alt={card.label}
-                  fill
-                  sizes="(min-width: 1280px) 820px, (min-width: 1024px) 680px, (min-width: 768px) 560px, (min-width: 640px) 420px, 280px"
-                  className="object-cover"
-                  priority
+                  priority={index < 3}
                 />
 
                 <div
