@@ -17,7 +17,7 @@ export default function ProductGrid() {
               <span className="text-brand-red">{flavorCount} flavors.</span>
             </h2>
             <p className="mt-4 text-brand-ink/65">
-              From pocket 8K and 9,900 screen models to 50K and 60K flagships —
+              From pocket 8K and 40K screen models to 50K and 60K flagships —
               pick your puff count and your favourite drop.
             </p>
           </div>

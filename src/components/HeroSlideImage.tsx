@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-/** Marketing posters (LW03/LW04) are large PNG/JPG — native img avoids blank Swiper slides; same cover fit as other hero cards. */
+/** Marketing posters (LW03/LW04) are large PNG/JPG — native img avoids blank Swiper slides. */
 export function isHeroMarketingPoster(src: string) {
   return src.includes("/lw03/") || src.includes("/lw04/");
 }
@@ -33,7 +33,7 @@ export default function HeroSlideImage({
       alt={alt}
       fill
       sizes="(min-width: 1280px) 820px, (min-width: 1024px) 680px, (min-width: 768px) 560px, (min-width: 640px) 420px, 280px"
-      className="object-cover"
+      className="object-cover object-center"
       priority={priority}
     />
   );

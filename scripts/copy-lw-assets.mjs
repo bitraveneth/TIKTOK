@@ -160,4 +160,47 @@ if (fs.existsSync(lifestyle2)) {
 
 console.log(`LW03 flavors copied: ${lw03Count}/15`);
 console.log(`LW04 flavors copied: ${lw04Count}/15`);
-console.log("Done → public/products/lw03 & lw04");
+
+// —— 40000 PUFF (TikTok 40K) ——
+const puff40Dir = path.join(root, "40000 PUFF");
+const puff40Flavors = [
+  ["berry-grape", "BERRY GRAPE"],
+  ["blue-raspberry-lemonade", "BLUE RASPBERRY LEMONADE"],
+  ["cherry-peach-lemon", "CHERRY PEACH LEMON"],
+  ["coke-ice", "COKE ICE"],
+  ["fizzy-cherry", "FIZZY CHERRY"],
+  ["gummy-bear", "GUMMY BEAR"],
+  ["kiwi-passion-guava", "KIWI PASSION GUAVA"],
+  ["peach-ice", "PEACH ICE"],
+  ["pineapple-ice", "PINEAPPLE ICE"],
+  ["pomegranate-berry", "POMEGRANTE BERRY"],
+  ["red-energy", "RED ENERGY"],
+  ["strawberry-ice", "STRAWBERRY ICE"],
+  ["strawberry-mint-lemonade", "STRAWBERRY MINT LEMONADE"],
+  ["watermelon-ice", "WATERMELON ICE"],
+  ["white-peach-raspberry", "WHITE PEACH RASPBERRY"],
+];
+
+let puff40Count = 0;
+if (fs.existsSync(puff40Dir)) {
+  const puff40Files = fs.readdirSync(puff40Dir);
+  for (const [slug, label] of puff40Flavors) {
+    const srcName = puff40Files.find(
+      (f) => f.toUpperCase().includes(label) && /\.webp$/i.test(f),
+    );
+    if (
+      srcName &&
+      copy(
+        path.join(puff40Dir, srcName),
+        path.join(out, "tiktok-40k", "flavors", `${slug}.webp`),
+      )
+    ) {
+      puff40Count++;
+    }
+  }
+  console.log(`TikTok 40K flavors copied: ${puff40Count}/15`);
+} else {
+  console.warn("MISSING folder:", puff40Dir);
+}
+
+console.log("Done → public/products/lw03, lw04 & tiktok-40k");

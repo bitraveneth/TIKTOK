@@ -81,7 +81,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               alt={`${product.name} lifestyle`}
               fill
               sizes="(min-width: 1024px) 50vw, 90vw"
-              className="object-cover"
+              className="object-cover object-center"
             />
           </div>
 
@@ -141,7 +141,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   alt={`${product.name} gallery ${i + 1}`}
                   fill
                   sizes="(min-width: 1024px) 33vw, 50vw"
-                  className="object-cover transition duration-700 hover:scale-105"
+                  className="object-cover object-center transition duration-700 hover:scale-105"
                 />
               </div>
             ))}

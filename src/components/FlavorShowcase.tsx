@@ -1,5 +1,6 @@
 "use client";
 
+import { productImageClassName } from "@/lib/product-image-styles";
 import { products } from "@/lib/products";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -73,6 +74,7 @@ function FlavorCard({
   size?: "side" | "hero";
 }) {
   const isHero = size === "hero";
+  const product = products.find((p) => p.slug === flavor.productSlug);
 
   return (
     <Link
@@ -98,7 +100,11 @@ function FlavorCard({
                 ? "(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 80vw"
                 : "(min-width: 1024px) 22vw, (min-width: 640px) 33vw, 45vw"
             }
-            className="object-cover"
+            className={
+              product
+                ? productImageClassName(product)
+                : "object-cover object-center"
+            }
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-ink/75 via-transparent to-transparent" />
 

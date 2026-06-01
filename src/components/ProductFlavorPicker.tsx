@@ -1,6 +1,13 @@
 "use client";
 
+import {
+  PACKAGED_CARD_FRAME_CLASS,
+  PACKAGED_HERO_SIZE_CLASS,
+  productThumbImageClassName,
+  usesCenteredDeviceImage,
+} from "@/lib/product-image-styles";
 import type { Flavor, Product } from "@/lib/products";
+import ProductPackagedImage from "@/components/ProductPackagedImage";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -67,22 +74,38 @@ export default function ProductFlavorPicker({ product }: { product: Product }) {
   const moods = getMoods(active);
   const notes = active.notes.split(" · ");
   const noteIntensities = [92, 78, 64, 55];
+  const fillCard = usesCenteredDeviceImage(product);
+  const fifteenFlavors = product.flavors.length === 15;
 
   return (
     <div className="space-y-12 md:space-y-14">
-      <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-        <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-brand-ink/10 bg-brand-cream-deep shadow-brand-card">
-          <Image
+      <div
+        className={`grid gap-10 lg:gap-16 ${
+          fillCard ? "lg:grid-cols-[1.2fr_0.8fr]" : "lg:grid-cols-[1.05fr_1fr]"
+        }`}
+      >
+        <div
+          className={
+            fillCard
+              ? `${PACKAGED_CARD_FRAME_CLASS} ${PACKAGED_HERO_SIZE_CLASS}`
+              : "relative aspect-[4/5] overflow-hidden rounded-[32px] border border-brand-ink/10 bg-brand-cream-deep shadow-brand-card"
+          }
+        >
+          <ProductPackagedImage
             key={active.id}
+            product={product}
             src={active.image}
             alt={`${product.name} — ${active.name}`}
-            fill
             sizes="(min-width: 1024px) 50vw, 90vw"
-            className="animate-[fadeIn_500ms_ease] object-cover"
             priority
+            className={fillCard ? "animate-[fadeIn_400ms_ease]" : "animate-[fadeIn_500ms_ease]"}
           />
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-ink/80 via-brand-ink/10 to-transparent p-6 pt-20">
+          <div
+            className={`pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-ink/80 via-brand-ink/10 to-transparent p-6 ${
+              fillCard ? "pt-16" : "pt-20"
+            }`}
+          >
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-cream/80">
               Now showing
             </p>
@@ -95,11 +118,9 @@ export default function ProductFlavorPicker({ product }: { product: Product }) {
             @keyframes fadeIn {
               from {
                 opacity: 0;
-                transform: scale(1.02);
               }
               to {
                 opacity: 1;
-                transform: scale(1);
               }
             }
           `}</style>
@@ -147,7 +168,13 @@ export default function ProductFlavorPicker({ product }: { product: Product }) {
               Choose your flavor — {product.flavors.length} available
             </p>
 
-            <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <ul
+              className={
+                fifteenFlavors
+                  ? "mt-4 grid grid-flow-col grid-cols-3 grid-rows-5 gap-3"
+                  : "mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3"
+              }
+            >
               {product.flavors.map((f) => {
                 const isActive = f.id === active.id;
                 return (
@@ -162,15 +189,17 @@ export default function ProductFlavorPicker({ product }: { product: Product }) {
                       }`}
                     >
                       <span
-                        className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-xl"
-                        style={{ background: f.accent }}
+                        className={`relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-xl ${
+                          fillCard ? "bg-brand-ink" : ""
+                        }`}
+                        style={fillCard ? undefined : { background: f.accent }}
                       >
                         <Image
                           src={f.image}
                           alt=""
                           fill
                           sizes="40px"
-                          className="object-cover"
+                          className={productThumbImageClassName(product)}
                         />
                       </span>
                       <span className="min-w-0 flex-1">

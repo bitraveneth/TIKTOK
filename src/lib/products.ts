@@ -1,4 +1,4 @@
-import { lw03Flavors, lw04Flavors } from "./lw-flavors";
+import { lw03Flavors, tiktok40kFlavors } from "./lw-flavors";
 
 export type Flavor = {
   id: string;
@@ -14,7 +14,7 @@ export type Product = {
   slug: string;
   name: string;
   shortName: string;
-  device: "D59016" | "T56018" | "LW03" | "LW04";
+  device: "D59016" | "T56018" | "LW03" | "LW04" | "LW04-40K";
   headline: string;
   tagline: string;
   description: string;
@@ -205,23 +205,23 @@ export const products: Product[] = [
     ],
   },
   {
-    id: "tiktok-9900",
-    slug: "tiktok-9900",
-    name: "TikTok 9900",
-    shortName: "9900",
-    device: "LW04",
+    id: "tiktok-40k",
+    slug: "tiktok-40k",
+    name: "TikTok 40K",
+    shortName: "40K",
+    device: "LW04-40K",
     headline: "Digital screen flagship",
-    tagline: "9,900 puffs with live status",
+    tagline: "40,000 puffs with live status",
     description:
-      "LW04 pairs a vertical digital display with mesh-coil performance and fifteen bold flavors. Rechargeable via Type-C, 500 mAh battery, and anti-leak engineering in a premium shell.",
-    puffs: "9,900",
+      "LW04 pairs a vertical digital display with mesh-coil performance and fifteen bold flavors. Up to 40,000 puffs, rechargeable via Type-C, 500 mAh battery, and anti-leak engineering in a premium shell.",
+    puffs: "40,000",
     tag: "New",
-    cover: "/products/lw04/flavors/berry-grape.jpg",
-    heroLifestyle: "/products/lw04/hero/main.jpg",
+    cover: "/products/tiktok-40k/hero/slider.png",
+    heroLifestyle: "/products/tiktok-40k/hero/slider.png",
     accent: "#8B5FBF",
-    flavors: lw04Flavors,
+    flavors: tiktok40kFlavors,
     specs: [
-      { label: "Puffs", value: "9,900" },
+      { label: "Puffs", value: "40,000" },
       { label: "Battery", value: "500 mAh" },
       { label: "Nicotine", value: "50 mg/ml" },
       { label: "Coil", value: "1.0Ω mesh" },
@@ -309,6 +309,13 @@ export const deviceGallery: Record<
       }),
     ],
   },
+  "LW04-40K": {
+    angles: tiktok40kFlavors.map((f) => f.image),
+    lifestyle: [
+      "/products/tiktok-40k/hero/slider.png",
+      ...tiktok40kFlavors.slice(0, 5).map((f) => f.image),
+    ],
+  },
 };
 
 export const heroDeck = [
@@ -350,9 +357,9 @@ export const heroDeck = [
   },
   {
     id: "h7",
-    label: "Digital screen lineup",
-    sub: "TikTok 9900",
-    image: "/products/lw04/hero/main-2.jpg",
+    label: "Pineapple · Mint Lemonade · Cherry Peach",
+    sub: "TikTok 40K · 40,000 puffs",
+    image: "/products/tiktok-40k/hero/slider.png",
   },
   {
     id: "h8",

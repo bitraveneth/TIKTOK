@@ -121,3 +121,61 @@ export const lw04Flavors: Flavor[] = [
 ].map(([id, name, notes, accent]) =>
   flavor(id, name, notes, `/products/lw04/flavors/${id}.jpg`, accent),
 );
+
+/** TikTok 40K — 40,000 puff lineup (packaged flavor art from 40000 PUFF assets) */
+export const tiktok40kFlavors: Flavor[] = [
+  ["berry-grape", "Berry Grape", "Mixed berry · Concord grape · Sweet", accents.berry],
+  [
+    "blue-raspberry-lemonade",
+    "Blue Raspberry Lemonade",
+    "Blue raspberry · Lemon · Fizz",
+    accents.blue,
+  ],
+  [
+    "cherry-peach-lemon",
+    "Cherry Peach Lemon",
+    "Cherry · Peach · Citrus",
+    accents.cherry,
+  ],
+  ["coke-ice", "Coke Ice", "Cola · Vanilla · Ice", accents.cola],
+  ["fizzy-cherry", "Fizzy Cherry", "Cherry · Soda · Sparkle", accents.cherry],
+  ["gummy-bear", "Gummy Bear", "Mixed fruit · Candy · Sweet", accents.yellow],
+  [
+    "kiwi-passion-guava",
+    "Kiwi Passion Guava",
+    "Kiwi · Passion fruit · Guava",
+    accents.green,
+  ],
+  ["peach-ice", "Peach Ice", "White peach · Nectar · Menthol", accents.peach],
+  ["pineapple-ice", "Pineapple Ice", "Pineapple · Citrus · Menthol", accents.yellow],
+  [
+    "pomegranate-berry",
+    "Pomegranate Berry",
+    "Pomegranate · Mixed berry · Tart",
+    accents.berry,
+  ],
+  ["red-energy", "Red Energy", "Red fruit · Energy drink · Bold", accents.cherry],
+  ["strawberry-ice", "Strawberry Ice", "Strawberry · Menthol · Sweet", accents.pink],
+  [
+    "strawberry-mint-lemonade",
+    "Strawberry Mint Lemonade",
+    "Strawberry · Mint · Lemon",
+    accents.mint,
+  ],
+  ["watermelon-ice", "Watermelon Ice", "Watermelon · Sugar · Menthol", accents.green],
+  [
+    "white-peach-raspberry",
+    "White Peach Raspberry",
+    "White peach · Raspberry · Soft finish",
+    accents.peach,
+  ],
+].map(([id, name, notes, accent]) =>
+  flavor(
+    id,
+    name,
+    notes,
+    `/products/tiktok-40k/flavors/${id}.webp`,
+    accent,
+    `${name} — ${notes.replace(/ · /g, ", ")}. Built for the 40,000-puff digital screen draw.`,
+  ),
+);

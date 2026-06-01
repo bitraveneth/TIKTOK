@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/products/tiktok-9900",
+        destination: "/products/tiktok-40k",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
